@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title> OA </title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- #CSS Links -->
+<!-- Basic Styles -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+
+<!-- SmartAdmin RTL Support -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+
+<!-- 我们建议您使用“your_style.css”覆盖SmartAdmin特定样式，这也将确保您重新训练每个SmartAdmin更新您的自定义。 -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css">
+
+<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+
+<!-- #FAVICONS -->
+<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+<!-- #GOOGLE FONT -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+<!-- #APP SCREEN / ICONS -->
+<!-- Specifying a Webpage Icon for Web Clip
+	 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+
+<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- Startup image for web apps -->
+<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+<style>
+	*{font-family:'微软雅黑';  }
+	body{font-family:'微软雅黑' !important;  }
+	[class!='fa']{font-family:'FontAwesome';  }
+
+</style>
+<!--
+
+	目录
+
+	使用搜索找到所需的部分。
+
+	===================================================================
+
+	|  01. #CSS Links                |  所有CSS链接和文件路径
+	|  02. #FAVICONS                 |  Favicon链接和文件路径
+	|  03. #GOOGLE FONT              |  Google字体链接
+	|  04. #APP SCREEN / ICONS       |   ICONS |应用程序图标，屏幕背景
+	|  05. #BODY                     |  body标签
+	|  06. #HEADER                   |  标头标签
+	|  07. #PROJECTS                 |  项目列表
+	|  08. #TOGGLE LAYOUT BUTTONS    |  布局按钮和操作
+	|  09. #MOBILE                   |  移动视图下拉
+	|  10. #SEARCH                   |  搜索字段
+	|  11. #NAVIGATION               |  左面板和导航
+	|  12. #MAIN PANEL               |  主面板
+	|  13. #MAIN CONTENT             |  内容持有人
+	|  14. #PAGE FOOTER              |  页脚
+	|  15. #SHORTCUT AREA            |  下拉快捷键区域
+	|  16. #PLUGINS                  |  所有脚本和插件
+
+	===================================================================
+
+	-->
+
+	<!-- #BODY -->
+	<!-- 可能的类
+
+		* 'smart-style-{SKIN#}'
+		* 'smart-rtl'         - 将主题模式切换到RTL
+		* 'menu-on-top'       - 切换到顶部导航（无需更改DOM）
+		* 'no-menu'			  - 完全隐藏菜单
+		* 'hidden-menu'       - 隐藏主菜单，但仍然可以通过悬停在左边缘访问
+		* 'fixed-header'      - 修复头
+		* 'fixed-navigation'  - 修复主菜单
+		* 'fixed-ribbon'      - 修复面包屑
+		* 'fixed-page-footer' - 修复页脚
+		* 'container'         - 盒装布局模式（无响应：将不工作与固定导航和固定功能区）
+-->
+</head>
+<body>
+
+
+	<!-- #HEADER -->
+	<header id="header">
+		<div id="logo-group">
+
+			<!-- 在这里放置您的头像 -->
+			<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
+			<!-- END LOGO PLACEHOLDER -->
+
+			<!--
+				注意：单击活动徽章颜色会更改，并将数字重置为0
+				建议：您可能需要设置一个标志，当这种情况下，所有选中的邮件/通知 -->
+
+			<span id="activity" class="activity-dropdown">
+				<img src='img/logo-o.png'>
+				<b class="badge"> 21 </b>
+			</span>
+
+			<!-- AJAX-DROPDOWN：控制这个下拉高度，从LESS变量文件的外观和感觉 -->
+			<div class="ajax-dropdown">
+
+				<!-- ID链接通过AJAX提取到ajax容器“ajax-notifications” -->
+				<div class="btn-group btn-group-justified" data-toggle="buttons">
+					<label class="btn btn-default">
+						<input type="radio" name="activity" id="ajax/notify/mail.html">
+						消息 (14) </label>
+					<label class="btn btn-default">
+						<input type="radio" name="activity" id="ajax/notify/notifications.html">
+						通知 (3) </label>
+					<label class="btn btn-default">
+						<input type="radio" name="activity" id="ajax/notify/tasks.html">
+						任务 (4) </label>
+				</div>
+
+				<!-- 通知内容 -->
+				<div class="ajax-notifications custom-scroll">
+
+					<div class="alert alert-transparent">
+						<h4>Click a button to show messages here</h4>
+						This blank page message helps protect your privacy, or you can show the first message here automatically.
+					</div>
+
+					<i class="fa fa-lock fa-4x fa-border"></i>
+
+				</div>
+				<!-- end 通知内容 -->
+
+				<!-- 页脚：刷新区域 -->
+				<span> 最后更新时间: 12/12/2013 9:43AM
+					<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> 加载中..." class="btn btn-xs btn-default pull-right">
+						<i class="fa fa-refresh"></i>
+					</button> </span>
+				<!-- end footer -->
+
+			</div>
+			<!-- END AJAX-DROPDOWN -->
+		</div>
+
+		<!-- #PROJECTS：项目下拉 -->
+		<div class="project-context hidden-xs">
+
+			<span class="label"><span id='current_username'>马玉遐</span><small> - 总经理</small> </span>
+			<span class="project-selector dropdown-toggle" data-toggle="dropdown">待办事项 <i class="fa fa-angle-down"></i></span>
+
+			<!-- 建议：使用抓取和推送技术填充此列表 -->
+			<ul class="dropdown-menu">
+				<li>
+					<a href="javascript:void(0);">任务一 : 产品管理-萍乡市小微企业征信产品1</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);">任务二 :合同管理-北京企信云信息科技有限公司征信合同</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="javascript:void(0);" class='pull-right'><i class="fa fa-power-off"></i> 更多...</a>
+				</li>
+			</ul>
+			<!-- end dropdown-menu-->
+
+		</div>
+		<!-- end projects dropdown -->
+
+		<!-- #TOGGLE LAYOUT BUTTONS -->
+		<!-- pulled right: nav area -->
+		<div class="pull-right">
+
+			<!-- collapse menu button -->
+			<div id="hide-menu" class="btn-header pull-right">
+				<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+			</div>
+			<!-- end collapse menu -->
+
+			<!-- #MOBILE -->
+			<!-- Top menu profile link : this shows only when top menu is active -->
+			<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+				<li>
+					<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+						<img src="img/avatars/sunny.png" alt="John Doe" class="online" />
+					</a>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#ajax/profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- logout button -->
+			<div id="logout" class="btn-header transparent pull-right">
+				<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="确认现在退出系统？"><i class="fa fa-sign-out"></i></a> </span>
+			</div>
+			<!-- end logout button -->
+
+			<!-- search mobile button (this is hidden till mobile view port) -->
+			<div id="search-mobile" class="btn-header transparent pull-right">
+				<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+			</div>
+			<!-- end search mobile button -->
+
+			<!-- #SEARCH -->
+			<!-- input: search field -->
+			<form action="#ajax/search.html" class="header-search pull-right">
+				<input id="search-fld" type="text" name="param" placeholder="全局搜索">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+				<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+			</form>
+			<!-- end input: search field -->
+
+			<!-- fullscreen button -->
+			<div id="fullscreen" class="btn-header transparent pull-right">
+				<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="切换全屏"><i class="fa fa-arrows-alt"></i></a> </span>
+			</div>
+			<!-- end fullscreen button -->
+
+		</div>
+		<!-- end pulled right: nav area -->
+
+	</header>
+	<!-- END HEADER -->
+
+	<!-- #导航 -->
+	<!-- 左面板：导航区域 -->
+	<!-- 注意：可以通过LESS / SASS变量调整旁边区域的宽度 -->
+
+	<aside id="left-panel">
+
+		<nav>
+			<!--
+			注意：注意每个图标使用<i> </ i>之后的差距。
+			请注意，这些链接工作有点不同
+			traditional href =“”links。 有关详细信息，请参阅文档。
+			-->
+
+			<ul>
+
+				<li>
+					<a href="ajax/organization.html"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">我的首页</span></a>
+					<ul>
+						<li>
+							<a href="ajax/tasks.html">我的待办</a>
+						</li>
+						<li>
+							<a class="inactive" href="#">我的日志</a>
+						</li>
+						<li>
+							<a class="inactive" href="#">我的考勤</a>
+						</li>
+						<li>
+							<a class="inactive" href="#">我的计划</a>
+						</li>
+						<li>
+							<a class="inactive" href="#">文件管理</a>
+						</li>
+						<li>
+							<a class="inactive" href="#">业务统计</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cog"></i> <span class="menu-item-parent">系统管理</span></a>
+					<ul>
+						<li>
+							<a href="ajax/organization.html">组织架构</a>
+						</li>
+						<li>
+							<a href="ajax/peoples.html">人员管理</a>
+						</li>
+						<li>
+							<a href="ajax/process.html">业务流程</a>
+						</li>
+						<li>
+							<a href="#"><span class="menu-item-parent">数据字典</span></a>
+							<ul>
+								<li><a href="ajax/keyType.html">字典类型</a></li>
+								<li><a href="ajax/key.html">字典管理</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-building"></i> <span class="menu-item-parent">企业管理</span></a>
+					<ul>
+						<li>
+							<a href="ajax/companyList.html">企业列表</a>
+						</li>
+						<li>
+							<a href="ajax/companyListAdd.html">企业添加审核列表</a>
+						</li>
+						<li>
+							<a href="#">企业认领审核列表</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">分配管理</span></a>
+					<ul>
+						<li>
+							<a href="#">分配列表</a>
+						</li>
+						<li>
+							<a href="#">固定列表</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">业务管理</span></a>
+					<ul>
+						<li>
+							<a href="#">业务列表</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">合同管理</span></a>
+					<ul>
+						<li>
+							<a href="#">合同列表</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cubes"></i> <span class="menu-item-parent">产品管理</span></a>
+					<ul>
+						<li>
+							<a href="ajax/product.html">产品列表</a>
+						</li>
+					</ul>
+				</li>
+                <li>
+                    <a href="#"  data-toggle="modal" data-target="#setPassword"><i class="fa fa-lg fa-fw fa-lock"></i> <span class="menu-item-parent">修改密码</span></a>
+                </li>
+			</ul>
+		</nav>
+
+		<span class="minifyme" data-action="minifyMenu" title='收起/弹出'> <i class="fa fa-arrow-circle-left hit"></i> </span>
+
+	</aside>
+
+	<!-- 结束导航 -->
+
+	<!-- #主面板 -->
+	<div id="main" role="main">
+
+		<!-- 色条 -->
+		<div id="ribbon">
+
+			<span class="ribbon-button-alignment">
+				<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true" data-reset-msg="Would you like to RESET all your saved widgets and clear LocalStorage?"><i class="fa fa-refresh"></i></span>
+			</span>
+
+			<!-- breadcrumb -->
+			<ol class="breadcrumb">
+				<!-- This is auto generated -->
+			</ol>
+			<!-- end breadcrumb -->
+
+			<!-- You can also add more buttons to the
+			ribbon for further usability
+
+			Example below:
+
+			<span class="ribbon-button-alignment pull-right" style="margin-right:25px">
+				<a href="#" id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa fa-grid"></i> Change Grid</a>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa fa-plus"></i> Add</span>
+				<button id="search" class="btn btn-ribbon" data-title="search"><i class="fa fa-search"></i> <span class="hidden-mobile">Search</span></button>
+			</span> -->
+
+		</div>
+		<!-- END 色条 -->
+
+		<!-- #MAIN CONTENT -->
+		<div id="content">
+
+		</div>
+
+		<!-- END #MAIN CONTENT -->
+
+	</div>
+	<!-- END #MAIN PANEL -->
+
+	<!-- #页尾 -->
+	<div class="page-footer">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<span class="txt-color-white">企信云 <span class="hidden-xs"> - 信息管理系统</span> © 2017</span>
+			</div>
+
+			<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+				<div class="txt-color-white inline-block">
+					<i class="txt-color-blueLight hidden-mobile"><i class="fa fa-clock-o"></i> 活动时间52分钟</i>
+					<div class="btn-group dropup">
+						<span class="btn btn-xs dropdown-toggle txt-color-white" data-toggle="dropdown">
+							<i class="fa fa-link"></i> <span class="caret"></span>
+						</span>
+						<ul class="dropdown-menu pull-right text-left">
+							<li>
+								<div class="padding-5">
+									<p class="txt-color-darken font-sm no-margin">工作进度</p>
+									<div class="progress progress-micro no-margin">
+										<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="padding-5">
+									<p class="txt-color-darken font-sm no-margin">当月任务</p>
+									<div class="progress progress-micro no-margin">
+										<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="padding-5">
+									<button class="btn btn-block btn-default">刷新</button>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- end btn-group-->
+				</div>
+				<!-- end div-->
+			</div>
+			<!-- end col -->
+		</div>
+		<!-- end row -->
+
+
+		<!-- 修改密码的弹窗 -->
+        <div class="modal fade" id="setPassword" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" style='max-width:600px;min-width:auto;margin:30px auto;padding:0 10px;'>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                    </div>
+                    <div class="modal-body">
+						<div class="widget-body no-padding">
+
+                        <form id="smart-form-register" class="smart-form">
+
+                            <fieldset>
+
+                                <section>
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="oldPassword" placeholder="请输入密码" id="oldPassword">
+                                        <b class="tooltip tooltip-bottom-right">请输入密码</b> </label>
+                                </section>
+
+                                <section>
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="password" placeholder="请输入新密码" id="password">
+                                        <b class="tooltip tooltip-bottom-right">不要忘记新密码</b> </label>
+                                </section>
+
+                                <section>
+                                    <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                        <input type="password" name="passwordConfirm" placeholder="请确认新密码">
+                                        <b class="tooltip tooltip-bottom-right">请确认新密码</b> </label>
+                                </section>
+                            </fieldset>
+
+                            <footer>
+                                <button type="submit" class="btn btn-primary">修改密码</button>
+                            </footer>
+                        </form>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- END FOOTER -->
+
+
+
+	<!-- #PLUGINS -->
+	<!-- jq,jq-ui -->
+	<script src="js/libs/jquery-2.1.1.min.js"></script>
+	<script src="js/libs/jquery-ui-1.10.3.min.js"></script>
+
+	<!-- IMPORTANT: APP配置 -->
+	<script src="js/app.config.js"></script>
+
+	<!-- JS TOUCH : 包括此插件用于移动拖放触摸事件-->
+	<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- BOOTSTRAP JS -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+
+	<!-- 自定义通知 -->
+	<script src="js/notification/SmartNotification.min.js"></script>
+
+	<!-- JARVIS WIDGETS -->
+	<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+	<!-- EASY PIE CHARTS 简单的字体 -->
+	<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+	<!-- SPARKLINES JQ迷你图 -->
+	<script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- JQUERY VALIDATE  JQ表单验证 -->
+	<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+	<!-- JQUERY MASKED INPUT JQ input掩码 -->
+	<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+	<!-- JQUERY SELECT2 INPUT   jq  SELECT2-->
+	<script src="js/plugin/select2/select2.min.js"></script>
+
+	<!-- JQUERY UI + Bootstrap Slider -->
+	<script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+	<!-- browser msie issue fix  浏览器msie问题修复 -->
+	<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+	<!-- FastClick: For mobile devices: you can disable this in app.js 对于移动设备：您可以在app.js中禁用此功能 -->
+	<script src="js/plugin/fastclick/fastclick.min.js"></script>
+
+	<!-- Demo purpose only -->
+	<script src="js/demo.min.js"></script>
+
+	<!-- MAIN APP JS FILE -->
+	<script src="js/app.js"></script>
+
+
+	<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT 增强插件：不是必要-->
+	<!-- Voice command : plugin  语音命令 -->
+	<script src="js/speech/voicecommand.min.js"></script>
+
+	<!-- SmartChat UI : plugin -->
+	<script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
+	<script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+	
+	<!-- 全局事件代理 -->
+	<script src='js/eve.js'></script>
+	<!-- 日期选择器 -->
+	<script src='js/app/laydate/laydate.js'></script>
+
+
+	<script src='js/app/initDataTables.js'></script>
+	<script src='js/app/qiniu.all.js' data-domain="http://og2a9bht0.bkt.clouddn.com/" data-uptoken="BK9IVJVjnu4AWlMhsnWKdz8FMQLfBxRl52JGh8ds:HSD-PgP1eDlsVM5TOf_qlMEIu2Q=:eyJzY29wZSI6InFpeGlueXVuIiwiZGVhZGxpbmUiOjE0ODI3Mzc3NDYsInVwSG9zdHMiOlsiaHR0cDpcL1wvdXAtejEucWluaXUuY29tIiwiaHR0cDpcL1wvdXBsb2FkLXoxLnFpbml1LmNvbSIsIi1IIHVwLXoxLnFpbml1LmNvbSBodHRwOlwvXC8xMDYuMzguMjI3LjI3Il19"></script>
+	<script>
+
+		// 修改密码弹窗
+    	$("#smart-form-register").validate({
+			rules : {
+				oldPassword : {
+					required : true,
+				},
+				password : {
+					required : true,
+					minlength : 3,
+					maxlength : 20
+				},
+				passwordConfirm : {
+					required : true,
+					minlength : 3,
+					maxlength : 20,
+					equalTo : '#password'
+				},
+			},
+			messages : {
+				password : {
+					required : '请输入您的密码'
+				},
+				password : {
+					required : '请输入新密码'
+				},
+				passwordConfirm : {
+					required : '请再次输入您的密码',
+					equalTo : '两次密码输入不一致'
+				},
+			},
+			submitHandler: function(form){
+				$.post(
+					'User/updatePassword', // 需要提交的 url
+					{
+						'oldPassword': $('#oldPassword').val(),
+						'password': $('#password').val()
+					},
+					function(data) { // data 保存提交后返回的数据，一般为 json 数据
+						// 此处可对 data 作相关处理
+						if(data.status=='success'){
+							alert(data.msg);
+							$('#setPassword .close').click();
+						}
+					},
+					'json'
+				);
+			},
+			errorPlacement : function(error, element) {
+				error.insertAfter(element.parent());
+			}
+		});
+	</script>
+</body>
+
+</html>
